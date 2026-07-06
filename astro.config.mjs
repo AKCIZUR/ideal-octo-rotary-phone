@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-const site = process.env.SITE_URL;
-const base = process.env.BASE_PATH;
+const site = process.env.SITE_URL ?? 'http://localhost:4321';
+const base = process.env.BASE_PATH ?? '/';
 
 export default defineConfig({
   site,
@@ -15,7 +15,7 @@ export default defineConfig({
         src: './src/assets/logo.svg',
         alt: 'VCCSD Docs',
       },
-      favicon: './public/favicon.svg',
+      favicon: '/favicon.svg',
       customCss: ['./src/styles/custom.css'],
       editLink: {
         baseUrl: 'https://github.com/USERNAME/REPO/edit/main/',

@@ -12,5 +12,8 @@
   "dependencies": {
     "@astrojs/starlight": "latest",
     "astro": "latest"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
