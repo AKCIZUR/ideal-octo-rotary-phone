@@ -1,59 +1,49 @@
-> Old template, please checkout https://github.com/nuxt-content/docus
+# Docus Pages Starter
 
-# Docus Starter
+Připravený dokumentační web pro GitHub Pages s automatickým nasazením po každé změně v `main`.
 
-Starter template for [Docus](https://docus.dev).
+## Co je uvnitř
 
-## Clone
+- Nuxt 3 + Docus
+- statický build pro GitHub Pages
+- automatický deploy přes GitHub Actions
+- správné nastavení `baseURL` pro projektové GitHub Pages i uživatelské stránky
+- `.nojekyll`, aby GitHub Pages nerozbil Nuxt assety
 
-Clone the repository (using `nuxi`):
-
-```bash
-npx nuxi init -t themes/docus
-```
-
-## Setup
-
-Install dependencies:
+## Spuštění lokálně
 
 ```bash
-yarn install
+pnpm install
+pnpm dev
 ```
 
-## Development
+## Build
 
 ```bash
-yarn dev
+pnpm generate
 ```
 
-## Edge Side Rendering
+Výstup je ve složce `.output/public`.
 
-Can be deployed to Vercel Functions, Netlify Functions, AWS, and most Node-compatible environments.
+## GitHub Pages
 
-Look at all the available presets [here](https://nuxt.com/docs/getting-started/deployment#presets).
+Workflow je připravený pro automatické nasazení po pushi do větve `main`.
 
-```bash
-yarn build
-```
+Pro správné fungování:
 
-## Static Generation
+1. V repozitáři zapni GitHub Pages.
+2. Jako zdroj vyber `Deploy from a branch` a větve `gh-pages`, nebo ponech Pages podle svého nastavení.
+3. Po každé změně v `main` se web znovu vygeneruje a publikuje.
 
-Use the `generate` command to build your application.
+## Úprava obsahu
 
-The HTML files will be generated in the .output/public directory and ready to be deployed to any static compatible hosting.
+- domovská stránka: `content/0.index.md`
+- sekce Guide: `content/1.guide/0.index.md`
+- nastavení webu: `app.config.ts`
+- base path a build: `nuxt.config.ts`
 
-```bash
-yarn generate
-```
+## Deploy workflow
 
-## Preview build
+Workflow najdeš v:
 
-You might want to preview the result of your build locally, to do so, run the following command:
-
-```bash
-yarn preview
-```
-
----
-
-For a detailed explanation of how things work, check out [Docus](https://docus.dev).
+`.github/workflows/deploy.yml`

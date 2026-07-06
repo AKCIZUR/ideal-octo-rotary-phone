@@ -1,7 +1,7 @@
 export default defineAppConfig({
   docus: {
-    title: 'Docus',
-    description: 'The best place to start your documentation.',
+    title: 'Docus Pages Starter',
+    description: 'Lehký dokumentační web připravený pro GitHub Pages automatický deploy.',
     image: 'https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png',
     socials: {
       twitter: 'nuxtstudio',
