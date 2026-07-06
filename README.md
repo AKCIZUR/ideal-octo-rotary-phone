@@ -1,119 +1,121 @@
+# Next.js MkDocs Material Alternative
 
-![banner](./.github/assets/banner.png)
+This project is a drop-in replacement for MkDocs Material, built with Next.js 14+, Tailwind CSS, and shadcn/ui. It aims to provide a modern, fast, and customizable documentation site generator that maintains compatibility with existing MkDocs projects while adding modern features and improvements.
 
-<p align="center">
-  <a href="https://github.com/squidfunk/mkdocs-shadcn/actions"><img
-    src="https://github.com/asiffer/mkdocs-shadcn/actions/workflows/testing.yaml/badge.svg"
-    alt="Testing"
-  /></a>
-  <a href="https://pypistats.org/packages/mkdocs-shadcn"><img
-    src="https://img.shields.io/pypi/dm/mkdocs-shadcn.svg"
-    alt="Downloads"
-  /></a>
-  <a href="https://pypi.org/project/mkdocs-shadcn"><img
-    src="https://img.shields.io/pypi/v/mkdocs-shadcn.svg"
-    alt="Python Package Index"
-  /></a>
-</p>
+## Features
 
+### Core Features
+- 📱 Fully responsive design with mobile-first approach
+- 🌓 Dark mode support with system preference detection
+- ⚡ Fast page loads with Next.js 14+ and App Router
+- 🎨 Customizable with Tailwind CSS
+- 📊 Beautiful UI components from shadcn/ui
+- 🔍 Full-text search with Pagefind integration
+- 📑 GitHub Flavored Markdown support with tables
 
-![screenshot](./.github/assets/screenshot.png)
+### Navigation
+- 📚 Dynamic sidebar navigation with collapsible sections
+- 🗺️ Automatic navigation structure from mkdocs.yml
+- 🔗 Previous/Next page navigation
+- 📱 Mobile-friendly navigation drawer with keyboard shortcuts (⌘K / Ctrl+K)
+- 🏷️ Section headers and improved navigation highlighting
+- 🔄 Version switching support (in development)
 
+### Image Handling
+- 🖼️ Advanced image optimization with Next.js Image component
+- 📸 Lightbox gallery support using double exclamation syntax (!![])
+- 🎯 Automatic image processing and path handling
+- 🔄 Support for both local and remote images
+- 📁 Automatic public directory management for assets
 
-> [!IMPORTANT]  
-> This is an unofficial port of shadcn/ui to MkDocs, and is not affiliated with [@shadcn](https://twitter.com/shadcn).
+### Code Features
+- 🎨 Syntax highlighting with rehype-pretty-code
+- 📝 Line highlighting and automatic line numbers
+- 📋 Copy-to-clipboard button on all code blocks
+- 🎭 Code block titles and language detection
+- 🎯 GitHub-themed light and dark syntax themes
 
+### Documentation Features
+- ⚠️ Admonitions with 12+ types (note, warning, danger, etc.)
+- 📑 Collapsible admonition blocks using ???
+- 🔲 Custom titles for admonition blocks
+- 📝 Rich markdown support
+- 🎯 Drop-In compatible with existing MkDocs content
 
-## Documentation
+## Project Structure
 
-Yes, yes, the [documentation](https://asiffer.github.io/mkdocs-shadcn/) is built with this theme.
-
-## Quick start
-
-`mkdocs-shadcn` can be installed with `pip` (you may also need `Pygments` for syntax highlighting).
-
-```shell
-pip install mkdocs-shadcn
+```
+your-project/
+├── mkdocs/              # Your documentation root
+│   ├── mkdocs.yml      # MkDocs configuration file
+│   └── docs/           # Documentation markdown files
+│       └── **/*.md     # Markdown files in any subdirectory
+├── components/         # React components
+├── lib/               # Utility functions
+└── public/            # Public assets
 ```
 
-Add the following line to `mkdocs.yml`:
+## Getting Started
 
-```yaml
-theme:
-  name: shadcn
+1. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
 ```
 
-> [!NOTE]  
-> [MkDocs is stale](https://fpgmaas.com/blog/collapse-of-mkdocs/). You can use [ProperDocs](github.com/ProperDocs/properdocs) as a drop-in replacement.
+2. Place your `mkdocs.yml` file in the `mkdocs` directory.
 
-## Extensions
+3. Place your markdown files in the `mkdocs` directory, maintaining your desired structure.
 
-The theme tries to support the built-in extensions along with some `pymdownx` ones. 
+4. Run the development server:
 
-- [x] [`admonition`](https://python-markdown.github.io/extensions/admonition/)
-- [x] [`codehilite`](https://python-markdown.github.io/extensions/code_hilite/)
-- [x] [`fenced_code`](https://python-markdown.github.io/extensions/fenced_code_blocks/)
-- [x] [`footnotes`](https://python-markdown.github.io/extensions/footnotes/)
-- [x] [`pymdownx.tabbed`](https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/)
-- [x] [`pymdownx.blocks.caption`](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/) 
-- [x] [`pymdownx.blocks.details`](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/details/) 
-- [x] [`pymdownx.blocks.tab`](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/tab/) 
-- [x] [`pymdownx.progressbar`](https://facelessuser.github.io/pymdown-extensions/extensions/progressbar/)
-- [x] [`pymdownx.arithmatex`](https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/)
-- [x] builtin [`shadcn.echarts`](https://asiffer.github.io/mkdocs-shadcn/extensions/echarts/)
-- [x] builtin [`shadcn.iconify`](https://asiffer.github.io/mkdocs-shadcn/extensions/iconify/)
-- [x] builtin [`shadcn.codexec`](https://asiffer.github.io/mkdocs-shadcn/extensions/codexec/) 
-
-
-## Plugins
-
-- [x] builtin [`excalidraw`](https://excalidraw.com/) - With this plugin, you can directly edit your excalidraw scene in dev mode (kind of WYSIWYG) while it is rendered as svg at build time
-- [x] [`mkdocstrings`](https://mkdocstrings.github.io/) - a MkDocs plugin for auto-generating API documentation from docstrings. (alpha)
-- [x] taylor-made `autonumber` plugin to automatically number and reference some elements (figures, tables, equations...)
-- [x] [`mike`](https://github.com/jimporter/mike) - A Python utility that makes it easy to deploy multiple versions of your MkDocs-powered docs to a Git branch.
-
-## Developers
-
-This project is open to contributions. In general, we need to apply the shadcn/ui style to already existing plugins or extensions. 
-
-We recently release the css sources we use to style the theme. It mainly uses [`tailwindcss`](https://tailwindcss.com/).
-
-### Setup
-
-First clone the repo:
-```shell
-git clone https://github.com/asiffer/mkdocs-shadcn
-cd mkdocs-shadcn
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-Then you can install python dependencies ([`uv`](https://docs.astral.sh/uv/) required):
-```shell
-uv sync --all-extras
-```
+5. Open [http://localhost:3000](http://localhost:3000) to see your documentation site.
 
-Finally, you can install tailwind with your favourite package manager (npm, yarn, bun, etc.):
+## MkDocs Compatibility
 
-```shell
-bun install
-```
+This project maintains full compatibility with MkDocs Material features while providing modern enhancements:
 
-### Dev mode
+### Fully Compatible Features
+- ✅ Basic markdown rendering with enhanced styling
+- ✅ Navigation structure from mkdocs.yml
+- ✅ Advanced image handling and optimization
+- ✅ Previous/Next navigation
+- ✅ Dark mode with system preference
+- ✅ Admonitions with all standard types
+- ✅ Code blocks with syntax highlighting
+- ✅ Content tabs
+- ✅ Collapsible navigation sections
+- ✅ Tables with column alignment support
 
-We use the project pages to as a test project for this theme. You can run the local server in the `pages/` subdirectory.
+### Enhanced Features
+- ✨ Improved image galleries with lightbox
+- ✨ Better code block interaction
+- ✨ Modern UI components
+- ✨ Faster page loads
+- ✨ Better mobile experience
+- ✨ TypeScript support
+- ✨ Modern development experience
 
-```shell
-cd pages/
-uv run mkdocs serve --watch-theme -w ..
-```
+### Coming Soon
+- 🔄 Table of contents
+- 🔄 More MkDocs Material extensions
 
-In parallel, you are likely to run the tailwind watcher to compile the css sources. In the root folder:
+## Contributing
 
-```shell
-bun dev
-```
+Contributions are welcome! Please feel free to submit a Pull Request. Check our contribution guidelines for more information.
 
-### Testing
+## License
 
-Tests are managed by [`pytest`](https://docs.pytest.org/en/stable/) and are located in the [tests/](./tests/) folder.
-
-Currently we only test that there is no browser issue through [playwright](https://playwright.dev/).
+This project is available under a custom license that allows free use for both personal and commercial purposes, but explicitly prohibits using the software to create commercial hosting services based on this project. See the [LICENSE](LICENSE.md) file for details.
