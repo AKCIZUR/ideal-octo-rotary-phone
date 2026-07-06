@@ -21,9 +21,12 @@ npm run dev
 
 ## Nastavení pro GitHub Pages
 
-Workflow už dopočítá URL a base path automaticky podle repozitáře na GitHubu.
+V souboru `.github/workflows/deploy.yml` uprav:
 
-Pro uživatelské Pages (`USERNAME.github.io`) zůstane `BASE_PATH` prázdné.
+- `SITE_URL` na `https://USERNAME.github.io`
+- `BASE_PATH` na `/<NAZEV_REPOZITARE>`
+
+Pro uživatelské Pages (`USERNAME.github.io`) může být `BASE_PATH` prázdné.
 
 V `astro.config.mjs` jsou použité stejné proměnné prostředí, takže build na GitHub Actions použije správnou URL i base path.
 
@@ -39,4 +42,4 @@ V `astro.config.mjs` jsou použité stejné proměnné prostředí, takže build
 
 ## Poznámka
 
-Balíček používá `latest` verze Astro a Starlight, aby šel použít jako univerzální základ. Pro dlouhodobě stabilní projekt doporučuji po instalaci připnout konkrétní verze přes lockfile.
+Balíček používá `latest` verze Astro a Starlight, aby šel použít jako univerzální základ. Pro dlouhodobě zamrznutý projekt doporučuji po instalaci verze připnout přes lockfile.
