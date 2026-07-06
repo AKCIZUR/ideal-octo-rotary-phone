@@ -1,55 +1,72 @@
 ---
 title: VCCSD Docs
-description: Tmavá dokumentační šablona postavená na Astro Starlight a připravená pro GitHub Pages.
+description: Produkční dokumentační šablona s Astro, Starlight, Lucide ikonami a GitHub Pages deployem.
 ---
 
-# VCCSD Docs
+import Hero from '../../components/Hero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import { ArrowRight, GitBranch, Palette, Rocket, ShieldCheck, Sparkles } from '@lucide/astro';
 
-Stabilní základ pro dokumentaci, který lze rychle upravit pro konkrétní projekt a dlouhodobě používat bez složité údržby.
+<Hero
+  title="Docs šablona, která startuje bez akrobatických ručních úprav"
+  lead="Tahle kostra je postavená pro čistý git clone, pnpm install, lokální vývoj a následný deploy na GitHub Pages. URL, base path i edit links se odvozují automaticky z prostředí GitHub Actions."
+/>
 
-## Co šablona řeší
+## Co je uvnitř
 
-- Markdown-first obsah
-- přehlednou navigaci
-- tmavý vizuální styl
-- automatické nasazení přes GitHub Actions
-- snadné verzování dokumentace
-- čistý základ bez zbytečné režie
+<FeatureGrid
+  items={[
+    {
+      icon: Rocket,
+      title: 'Aktuální Astro + Starlight',
+      text: 'Moderní statická dokumentace s MDX podporou, search a stabilním production workflow.',
+    },
+    {
+      icon: GitBranch,
+      title: 'GitHub Pages auto deploy',
+      text: 'Oficiální Astro action v kombinaci s Pages deploymentem bez ručního přepisování URL.',
+    },
+    {
+      icon: Palette,
+      title: 'Vlastní dark theme',
+      text: 'Tmavá vizuální vrstva s vlastním barevným systémem, kartami a hero sekcí.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Node 22/24 ready',
+      text: 'Projekt míří na současné LTS a workflow je připravené na běh v GitHub Actions.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Lucide ikony',
+      text: 'Lehké SVG komponenty pro hero, feature karty a další vizuální drobnosti.',
+    },
+    {
+      icon: ArrowRight,
+      title: 'Bez placeholderů',
+      text: 'Žádné USERNAME, REPO ani ruční base URL. Šablona se přizpůsobí prostředí sama.',
+    },
+  ]}
+/>
 
-## Jak s ní pracovat
-
-1. uprav názvy a odkazy v `astro.config.mjs`
-2. vlož vlastní obsah do `src/content/docs/`
-3. nastav `SITE_URL` a `BASE_PATH` ve workflow
-4. pushni změny do GitHubu
-5. GitHub Pages se nasadí automaticky
-
-## Kde začít
-
-Podívej se nejdřív na:
-
-- [Začínáme](getting-started/)
-- [Konfigurace](configuration/)
-- [Nasazení](deployment/)
-
-## Výhody
-
-- rychlý start
-- minimum závislostí
-- dobrá čitelnost
-- vhodné pro interní i veřejné docs
-- snadno rozšiřitelný sidebar
-- připravené místo pro průvodce, FAQ a changelog
-
-## Doporučený pracovní postup
+## Rychlý start
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-Pak už stačí jen přidávat další soubory do `src/content/docs/`.
+## Co se děje při deployi
 
-## Co je na tom důležité
+1. GitHub Actions spustí build.
+2. Astro si přečte `GITHUB_REPOSITORY` a dopočítá `site` i `base`.
+3. Site se vygeneruje jako statická dokumentace.
+4. GitHub Pages dostane hotový artifact a publikuje ho.
 
-Cílem není vytvořit jen hezkou šablonu. Cílem je mít dokumentační základ, který vydrží dlouho, dobře se udržuje a není svázaný s těžkopádným systémem.
+## Doporučený provozní režim
+
+- vývoj lokálně přes `pnpm dev`
+- build kontrola přes `pnpm build`
+- před nasazením ověřit `pnpm preview`
+
+> Tohle je užitečné jako základ pro docs, interní knowledge base i veřejný open source projekt.

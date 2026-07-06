@@ -1,0 +1,18 @@
+---
+const { items = [] } = Astro.props;
+---
+
+<div class="feature-grid">
+  {items.map((item) => {
+    const Icon = item.icon;
+    return (
+      <article class="feature-card">
+        <div class="icon">
+          <Icon size={22} />
+        </div>
+        <h3>{item.title}</h3>
+        <p>{item.text}</p>
+      </article>
+    );
+  })}
+</div>

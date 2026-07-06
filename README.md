@@ -1,45 +1,56 @@
-# VCCSD Docs — Astro Starlight GitHub Pages starter
+# VCCSD Docs Template
 
-Hotová šablona dokumentačního webu s tmavým vzhledem, Markdown obsahem a automatickým nasazením na GitHub Pages.
+Produkční dokumentační šablona pro Astro + Starlight s automatickým nasazením na GitHub Pages.
 
 ## Co je uvnitř
 
-- Astro + Starlight
-- český výchozí obsah
-- dark theme
-- sidebar
-- vlastní logo a favicon
+- Astro 7
+- Starlight 0.41
+- Node.js 22.12+ a 24
+- pnpm-ready setup
 - GitHub Pages workflow
-- připravená struktura dokumentace
+- automatická detekce `site` a `base` podle GitHub Actions prostředí
+- vlastní dark theme
+- Lucide ikony
+- MDX podporu
+- sitemap integraci
 
-## Rychlé spuštění
+## Spuštění
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-## Nastavení pro GitHub Pages
+## Build
 
-V souboru `.github/workflows/deploy.yml` uprav:
+```bash
+pnpm build
+pnpm preview
+```
 
-- `SITE_URL` na `https://USERNAME.github.io`
-- `BASE_PATH` na `/<NAZEV_REPOZITARE>`
+## GitHub Pages
 
-Pro uživatelské Pages (`USERNAME.github.io`) může být `BASE_PATH` prázdné.
+Workflow v `.github/workflows/deploy.yml` používá oficiální Astro action pro build a upload a pak deploy přes GitHub Pages.
 
-V `astro.config.mjs` jsou použité stejné proměnné prostředí, takže build na GitHub Actions použije správnou URL i base path.
+Repo URL a base path se počítají automaticky z:
 
-## Obsah
+- `GITHUB_REPOSITORY`
+- `GITHUB_SERVER_URL`
+- `GITHUB_REF_NAME`
+- volitelně `SITE_URL`
+- volitelně `ASTRO_BASE`
 
-- `src/content/docs/index.mdx` — domovská stránka
-- `src/content/docs/getting-started.mdx` — start
-- `src/content/docs/configuration.mdx` — konfigurace
-- `src/content/docs/deployment.mdx` — nasazení
-- `src/content/docs/guides/*` — průvodce
-- `src/content/docs/faq.mdx` — FAQ
-- `src/content/docs/changelog.mdx` — změny
+Tím je šablona připravená pro projektové stránky i user pages bez ručních placeholderů.
 
-## Poznámka
+## Struktura
 
-Balíček používá `latest` verze Astro a Starlight, aby šel použít jako univerzální základ. Pro dlouhodobě zamrznutý projekt doporučuji po instalaci verze připnout přes lockfile.
+- `src/content/docs/index.mdx` - landing page
+- `src/content/docs/guides/*` - návody
+- `src/content/docs/reference/*` - reference sekce
+- `src/components/*` - vlastní UI komponenty
+- `src/styles/custom.css` - dark theme a přepis stylů
+
+## Poznámka k lockfile
+
+`pnpm-lock.yaml` je přiložen jako bootstrap scaffold. Po prvním online instalování závislostí ho pnpm doplní do plné podoby.
