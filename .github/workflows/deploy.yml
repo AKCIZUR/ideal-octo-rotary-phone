@@ -1,28 +1,37 @@
-name: Deploy static site to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
-env:
-  PUBLISH_DIR: site
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      SITE_URL: https://USERNAME.github.io
+      BASE_PATH: /REPO
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Install, build, and upload
+        uses: withastro/action@v6
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ env.PUBLISH_DIR }}
-          force_orphan: true
-          enable_jekyll: false
+          node-version: 24
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

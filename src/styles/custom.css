@@ -1,0 +1,62 @@
+:root {
+  --sl-content-width: 78rem;
+  --sl-sidebar-width: 18rem;
+  --sl-color-accent-low: #1a2740;
+  --sl-color-accent: #8b5cf6;
+  --sl-color-accent-high: #c4b5fd;
+  --sl-color-white: #f8fafc;
+  --sl-color-gray-1: #e2e8f0;
+  --sl-color-gray-2: #cbd5e1;
+  --sl-color-gray-3: #94a3b8;
+  --sl-color-gray-4: #64748b;
+  --sl-color-gray-5: #475569;
+  --sl-color-gray-6: #334155;
+  --sl-color-gray-7: #1e293b;
+  --sl-color-gray-8: #0f172a;
+  --sl-color-bg: #0b1020;
+  --sl-color-bg-nav: rgba(11, 16, 32, 0.92);
+  --sl-color-bg-sidebar: rgba(11, 16, 32, 0.96);
+  --sl-color-text: #e5e7eb;
+  --sl-color-text-accent: #d8b4fe;
+}
+
+html {
+  color-scheme: dark;
+  background:
+    radial-gradient(circle at top, rgba(139, 92, 246, 0.14), transparent 32%),
+    linear-gradient(180deg, #0b1020 0%, #0a0f1a 100%);
+}
+
+body {
+  background: transparent;
+}
+
+.site-title {
+  letter-spacing: 0.04em;
+}
+
+.sl-markdown-content :is(h2, h3) {
+  scroll-margin-top: 6rem;
+}
+
+.sl-markdown-content > :is(p, ul, ol, blockquote, pre, table) {
+  max-width: 72ch;
+}
+
+.sl-markdown-content pre {
+  border-radius: 1rem;
+}
+
+.sl-link-card {
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.sl-link-card:hover {
+  transform: translateY(-2px);
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
+}

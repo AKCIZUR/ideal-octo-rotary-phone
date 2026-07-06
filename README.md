@@ -1,25 +1,45 @@
-# Docus Ready for GitHub Pages
+# VCCSD Docs — Astro Starlight GitHub Pages starter
 
-Statická verze dokumentačního webu připravená pro automatický deploy na GitHub Pages.
+Hotová šablona dokumentačního webu s tmavým vzhledem, Markdown obsahem a automatickým nasazením na GitHub Pages.
 
-## Co to dělá
+## Co je uvnitř
 
-- stránka běží bez Nuxt buildu a bez křehkých runtime závislostí
-- po pushi do větve `main` se obsah z `site/` publikuje na `gh-pages`
-- součástí je dark mode, responzivní menu a čistý dokumentační layout
+- Astro + Starlight
+- český výchozí obsah
+- dark theme
+- sidebar
+- vlastní logo a favicon
+- GitHub Pages workflow
+- připravená struktura dokumentace
 
-## Struktura
+## Rychlé spuštění
 
-- `site/index.html` — domovská stránka
-- `site/guide/index.html` — průvodce
-- `site/assets/style.css` — styly
-- `site/assets/app.js` — theme switch a mobilní menu
-- `.github/workflows/deploy.yml` — automatický deploy
+```bash
+npm install
+npm run dev
+```
 
-## Nasazení
+## Nastavení pro GitHub Pages
 
-1. Nahraj repozitář na GitHub.
-2. V nastavení repozitáře zapni GitHub Pages z větve `gh-pages`.
-3. Pushni změny do `main`.
+V souboru `.github/workflows/deploy.yml` uprav:
 
-Workflow publikuje obsah automaticky po každé změně.
+- `SITE_URL` na `https://USERNAME.github.io`
+- `BASE_PATH` na `/<NAZEV_REPOZITARE>`
+
+Pro uživatelské Pages (`USERNAME.github.io`) může být `BASE_PATH` prázdné.
+
+V `astro.config.mjs` jsou použité stejné proměnné prostředí, takže build na GitHub Actions použije správnou URL i base path.
+
+## Obsah
+
+- `src/content/docs/index.mdx` — domovská stránka
+- `src/content/docs/getting-started.mdx` — start
+- `src/content/docs/configuration.mdx` — konfigurace
+- `src/content/docs/deployment.mdx` — nasazení
+- `src/content/docs/guides/*` — průvodce
+- `src/content/docs/faq.mdx` — FAQ
+- `src/content/docs/changelog.mdx` — změny
+
+## Poznámka
+
+Balíček používá `latest` verze Astro a Starlight, aby šel použít jako univerzální základ. Pro dlouhodobě zamrznutý projekt doporučuji po instalaci verze připnout přes lockfile.

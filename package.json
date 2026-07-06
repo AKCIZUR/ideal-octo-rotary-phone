@@ -1,8 +1,16 @@
 {
-  "name": "docus-starter-static",
+  "name": "vccsd-docs",
   "private": true,
+  "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "lint": "echo \"Static site: no lint step configured\""
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "latest",
+    "astro": "latest"
   }
 }
