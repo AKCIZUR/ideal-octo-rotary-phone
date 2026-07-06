@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lehký dokumentační web připravený pro GitHub Pages s automatickým deployem.">
+  <title>Docus — GitHub Pages Ready</title>
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav" aria-label="Hlavní navigace">
+        <a class="brand" href="./">
+          <span class="brand-badge">D</span>
+          <span>Docus Ready</span>
+        </a>
+
+        <div class="nav-links" aria-label="Sekce">
+          <a href="#features">Funkce</a>
+          <a href="#deploy">Deploy</a>
+          <a href="./guide/">Průvodce</a>
+        </div>
+
+        <div class="nav-actions">
+          <button class="icon-btn menu-btn" data-menu-toggle aria-expanded="false" aria-label="Otevřít menu">☰</button>
+          <button class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Přepnout motiv">◐</button>
+          <a class="btn primary" href="./guide/">Začít</a>
+        </div>
+      </nav>
+      <div class="mobile-panel" data-mobile-panel hidden>
+        <a href="#features">Funkce</a>
+        <a href="#deploy">Deploy</a>
+        <a href="./guide/">Průvodce</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">GitHub Pages • automatický deploy • bez křehkého Nuxt buildu</span>
+          <h1>Dokumentační web, který prostě funguje.</h1>
+          <p>
+            Tahle verze je postavená jako čistý statický web. Po pushi do repozitáře se automaticky nasadí
+            na GitHub Pages, bez build chyb a bez závislosti na problematickém runtime nastavení.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="./guide/">Otevřít průvodce</a>
+            <a class="btn" href="#deploy">Jak deploy funguje</a>
+          </div>
+        </div>
+
+        <div class="card preview">
+          <div class="preview-panel">
+            <div class="kicker">Přehled</div>
+            <div class="preview-grid">
+              <div class="mini"><small>Stránky</small><strong>Home + Guide</strong></div>
+              <div class="mini"><small>Téma</small><strong>Světlo / tma</strong></div>
+              <div class="mini"><small>Deploy</small><strong>gh-pages</strong></div>
+            </div>
+          </div>
+          <div class="preview-panel">
+            <div class="kicker">Stav</div>
+            <strong>Ready pro GitHub Pages</strong>
+            <p style="margin:8px 0 0; color: var(--muted)">Žádný Nuxt build, žádné import.meta problémy, žádné skryté runtime závislosti.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <h2>Co je v balíčku</h2>
+        <p class="lead">Stránka je navržená jako lehký dokumentační základ s čistým layoutem, responzivitou a jednoduchou údržbou.</p>
+        <div class="grid-3">
+          <article class="card feature">
+            <div class="kicker">1</div>
+            <h3>Moderní vzhled</h3>
+            <p>Gradienty, cards, přepínání motivu a přehledná typografie bez těžké knihovny.</p>
+          </article>
+          <article class="card feature">
+            <div class="kicker">2</div>
+            <h3>Jednoduché nasazení</h3>
+            <p>Workflow posílá obsah přímo do větve gh-pages po každé změně v hlavní větvi.</p>
+          </article>
+          <article class="card feature">
+            <div class="kicker">3</div>
+            <h3>Bez build pádu</h3>
+            <p>Odpadá problém s Nuxtem a nesprávným načítáním modulů při generování statické verze.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="deploy" class="section">
+      <div class="container">
+        <h2>Deploy v praxi</h2>
+        <p class="lead">Stačí pushnout změny do větve <strong>main</strong>. GitHub Actions vezme složku <code>site/</code> a publikuje ji na Pages.</p>
+        <div class="grid-3">
+          <article class="card step">
+            <div class="kicker">Krok 1</div>
+            <h3>Upravit obsah</h3>
+            <p>Texty, menu i vzhled jsou v běžných HTML/CSS souborech.</p>
+          </article>
+          <article class="card step">
+            <div class="kicker">Krok 2</div>
+            <h3>Pushnout do main</h3>
+            <p>Workflow se spustí samo a začne publikovat novou verzi.</p>
+          </article>
+          <article class="card step">
+            <div class="kicker">Krok 3</div>
+            <h3>Publikovat na Pages</h3>
+            <p>Výsledek běží z gh-pages branch a funguje i jako projektová stránka.</p>
+          </article>
+        </div>
+        <div class="codebox"><code>git add . &amp;&amp; git commit -m "update site" &amp;&amp; git push</code></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© Docus Ready</div>
+      <div>Statická verze připravená pro GitHub Pages</div>
+    </div>
+  </footer>
+
+  <script src="./assets/app.js"></script>
+</body>
+</html>
