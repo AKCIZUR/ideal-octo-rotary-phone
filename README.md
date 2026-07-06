@@ -1,56 +1,119 @@
-# VCCSD Docs Template
 
-Produkční dokumentační šablona pro Astro + Starlight s automatickým nasazením na GitHub Pages.
+![banner](./.github/assets/banner.png)
 
-## Co je uvnitř
+<p align="center">
+  <a href="https://github.com/squidfunk/mkdocs-shadcn/actions"><img
+    src="https://github.com/asiffer/mkdocs-shadcn/actions/workflows/testing.yaml/badge.svg"
+    alt="Testing"
+  /></a>
+  <a href="https://pypistats.org/packages/mkdocs-shadcn"><img
+    src="https://img.shields.io/pypi/dm/mkdocs-shadcn.svg"
+    alt="Downloads"
+  /></a>
+  <a href="https://pypi.org/project/mkdocs-shadcn"><img
+    src="https://img.shields.io/pypi/v/mkdocs-shadcn.svg"
+    alt="Python Package Index"
+  /></a>
+</p>
 
-- Astro 7
-- Starlight 0.41
-- Node.js 22.12+ a 24
-- pnpm-ready setup
-- GitHub Pages workflow
-- automatická detekce `site` a `base` podle GitHub Actions prostředí
-- vlastní dark theme
-- Lucide ikony
-- MDX podporu
-- sitemap integraci
 
-## Spuštění
+![screenshot](./.github/assets/screenshot.png)
 
-```bash
-pnpm install
-pnpm dev
+
+> [!IMPORTANT]  
+> This is an unofficial port of shadcn/ui to MkDocs, and is not affiliated with [@shadcn](https://twitter.com/shadcn).
+
+
+## Documentation
+
+Yes, yes, the [documentation](https://asiffer.github.io/mkdocs-shadcn/) is built with this theme.
+
+## Quick start
+
+`mkdocs-shadcn` can be installed with `pip` (you may also need `Pygments` for syntax highlighting).
+
+```shell
+pip install mkdocs-shadcn
 ```
 
-## Build
+Add the following line to `mkdocs.yml`:
 
-```bash
-pnpm build
-pnpm preview
+```yaml
+theme:
+  name: shadcn
 ```
 
-## GitHub Pages
+> [!NOTE]  
+> [MkDocs is stale](https://fpgmaas.com/blog/collapse-of-mkdocs/). You can use [ProperDocs](github.com/ProperDocs/properdocs) as a drop-in replacement.
 
-Workflow v `.github/workflows/deploy.yml` používá oficiální Astro action pro build a upload a pak deploy přes GitHub Pages.
+## Extensions
 
-Repo URL a base path se počítají automaticky z:
+The theme tries to support the built-in extensions along with some `pymdownx` ones. 
 
-- `GITHUB_REPOSITORY`
-- `GITHUB_SERVER_URL`
-- `GITHUB_REF_NAME`
-- volitelně `SITE_URL`
-- volitelně `ASTRO_BASE`
+- [x] [`admonition`](https://python-markdown.github.io/extensions/admonition/)
+- [x] [`codehilite`](https://python-markdown.github.io/extensions/code_hilite/)
+- [x] [`fenced_code`](https://python-markdown.github.io/extensions/fenced_code_blocks/)
+- [x] [`footnotes`](https://python-markdown.github.io/extensions/footnotes/)
+- [x] [`pymdownx.tabbed`](https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/)
+- [x] [`pymdownx.blocks.caption`](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/) 
+- [x] [`pymdownx.blocks.details`](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/details/) 
+- [x] [`pymdownx.blocks.tab`](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/tab/) 
+- [x] [`pymdownx.progressbar`](https://facelessuser.github.io/pymdown-extensions/extensions/progressbar/)
+- [x] [`pymdownx.arithmatex`](https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/)
+- [x] builtin [`shadcn.echarts`](https://asiffer.github.io/mkdocs-shadcn/extensions/echarts/)
+- [x] builtin [`shadcn.iconify`](https://asiffer.github.io/mkdocs-shadcn/extensions/iconify/)
+- [x] builtin [`shadcn.codexec`](https://asiffer.github.io/mkdocs-shadcn/extensions/codexec/) 
 
-Tím je šablona připravená pro projektové stránky i user pages bez ručních placeholderů.
 
-## Struktura
+## Plugins
 
-- `src/content/docs/index.mdx` - landing page
-- `src/content/docs/guides/*` - návody
-- `src/content/docs/reference/*` - reference sekce
-- `src/components/*` - vlastní UI komponenty
-- `src/styles/custom.css` - dark theme a přepis stylů
+- [x] builtin [`excalidraw`](https://excalidraw.com/) - With this plugin, you can directly edit your excalidraw scene in dev mode (kind of WYSIWYG) while it is rendered as svg at build time
+- [x] [`mkdocstrings`](https://mkdocstrings.github.io/) - a MkDocs plugin for auto-generating API documentation from docstrings. (alpha)
+- [x] taylor-made `autonumber` plugin to automatically number and reference some elements (figures, tables, equations...)
+- [x] [`mike`](https://github.com/jimporter/mike) - A Python utility that makes it easy to deploy multiple versions of your MkDocs-powered docs to a Git branch.
 
-## Poznámka k lockfile
+## Developers
 
-`pnpm-lock.yaml` je přiložen jako bootstrap scaffold. Po prvním online instalování závislostí ho pnpm doplní do plné podoby.
+This project is open to contributions. In general, we need to apply the shadcn/ui style to already existing plugins or extensions. 
+
+We recently release the css sources we use to style the theme. It mainly uses [`tailwindcss`](https://tailwindcss.com/).
+
+### Setup
+
+First clone the repo:
+```shell
+git clone https://github.com/asiffer/mkdocs-shadcn
+cd mkdocs-shadcn
+```
+
+Then you can install python dependencies ([`uv`](https://docs.astral.sh/uv/) required):
+```shell
+uv sync --all-extras
+```
+
+Finally, you can install tailwind with your favourite package manager (npm, yarn, bun, etc.):
+
+```shell
+bun install
+```
+
+### Dev mode
+
+We use the project pages to as a test project for this theme. You can run the local server in the `pages/` subdirectory.
+
+```shell
+cd pages/
+uv run mkdocs serve --watch-theme -w ..
+```
+
+In parallel, you are likely to run the tailwind watcher to compile the css sources. In the root folder:
+
+```shell
+bun dev
+```
+
+### Testing
+
+Tests are managed by [`pytest`](https://docs.pytest.org/en/stable/) and are located in the [tests/](./tests/) folder.
+
+Currently we only test that there is no browser issue through [playwright](https://playwright.dev/).
