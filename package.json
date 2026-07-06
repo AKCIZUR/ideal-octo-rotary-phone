@@ -1,19 +1,8 @@
 {
-  "name": "docus-starter",
-  "version": "0.1.0",
+  "name": "docus-starter-static",
   "private": true,
+  "version": "1.0.0",
   "scripts": {
-    "dev": "nuxi dev",
-    "build": "nuxi build",
-    "generate": "nuxi generate",
-    "preview": "nuxi preview",
-    "lint": "eslint .",
-    "deploy": "pnpm generate"
-  },
-  "devDependencies": {
-    "@nuxt-themes/docus": "^1.14.7",
-    "@nuxt/eslint-config": "^0.2.0",
-    "eslint": "^8.50.0",
-    "nuxt": "3.7.3"
+    "lint": "echo \"Static site: no lint step configured\""
   }
 }
